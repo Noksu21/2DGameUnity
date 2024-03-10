@@ -10,7 +10,7 @@ public class MoveLeft : MonoBehaviour{
         PlayerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();}
 
     void Update(){
-        if(PlayerControllerScript.GameOver == false){
+        if(PlayerControllerScript.gameOver == false){
      transform.Translate(Vector3.left * Time.deltaTime * speed);}
     
     if(transform.position.x <leftBound && gameObject.CompareTag("Obstacle")) {
