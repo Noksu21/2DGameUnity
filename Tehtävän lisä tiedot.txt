@@ -1,0 +1,6 @@
+pelistä löyttyy -endless runner -high score -score -main menu -timer -restartmenu -spawn more obstacle when game you get more score
+pelin avaamalla alkaa päävalikko josta löytyy projectin tietodot quit sekä peliin start josta pääsee suoraan peliin. 
+pelissä on ajastin joka löytyy vasemasta yläkulmasta ja kertoo pistee. oikeasta yläkulmasta löytyy high score.
+jos pelaajalla ei ole vielä high score siellä ei näy numeroa mutta kun pelaaja häviää esimmäisen kerran se tulee näkyviin.
+kun kuolee on mahdollista aloittaa alusta tai palata päävalikkoon. pelistä löytyy myös ajastin minkä avulla alkaa syntyä esineitä nopeammin.
+pelissä tavoitteen on selvitä mahollisiman pitkää osumatta esteisiin. 
