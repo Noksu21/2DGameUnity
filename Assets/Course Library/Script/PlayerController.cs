@@ -29,22 +29,22 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+        playerRb = GetComponent<Rigidbody>();// Get references to components
         playerAnim = GetComponent<Animator>();
-        Physics.gravity *= gravityModifier;
+        Physics.gravity *= gravityModifier;// Set gravity modifier
         playerAudio = GetComponent<AudioSource>();
-        jumpForce = PlayerPrefs.GetFloat("JumpForce", 900f);
+        jumpForce = PlayerPrefs.GetFloat("JumpForce", 900f);// Load jump force from PlayerPrefs or use default value for fix
 
         initialPosition = transform.position;
 
-        uiController = FindObjectOfType<UIController>();
+        uiController = FindObjectOfType<UIController>();// Find and get reference to UIController script
 
         uiController.StartTimer();
     }
 
     void Update()
     {
-        if (!gameOver && isOnGround && Input.GetKeyDown(KeyCode.Space))
+        if (!gameOver && isOnGround && Input.GetKeyDown(KeyCode.Space))// Check for player input and conditions for jumping
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
@@ -56,12 +56,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))// Check collision with ground or obstacle
         {
             isOnGround = true;
             dirtparticle.Play();
         }
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle"))// Handle collision with obstacle
         {
             gameOver = true;
             playerAnim.SetBool("Death_b", true);
@@ -70,12 +70,13 @@ public class PlayerController : MonoBehaviour
             dirtparticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
 
+            // Stop the timer and show game over UI elements
             uiController.StopTimer();
             gameOverText.gameObject.SetActive(true);
             RestartButton.gameObject.SetActive(true);
             MainMenu.gameObject.SetActive(true);
 
-
+            // Reset player position
             transform.position = initialPosition;
         }
     }
